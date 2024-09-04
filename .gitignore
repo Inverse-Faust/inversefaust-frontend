@@ -1,0 +1,9 @@
+.DS_Store
+package.json
+.eslintrc.json
+.prettierrc.json
+/node_modules
+.env
+
+# idea 파일
+.idea
