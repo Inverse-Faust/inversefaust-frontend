@@ -19,15 +19,15 @@ export default function Bottom() {
     },
     {
       id: 2,
-      label: 'Write',
-      route: '/diarywrite',
-      icon: <PencilIcon />,
-    },
-    {
-      id: 3,
       label: 'Activty',
       route: '/foodwrite',
       icon: <MeatIcon />,
+    },
+    {
+      id: 3,
+      label: 'Write',
+      route: '/diarywrite',
+      icon: <PencilIcon />,
     },
     {
       id: 4,
