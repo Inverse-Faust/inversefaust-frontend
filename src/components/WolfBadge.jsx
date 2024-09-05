@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import WolfIcon from '../Icons/WolfIcon';
 
 export default function WolfBadge() {
   const [isChatOpen, setIsChatOpen] = useState(false);
