@@ -1,29 +1,12 @@
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import WolfIcon from '../Icons/WolfIcon';
 
 export default function WolfBadge() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const messages = useSelector(state => state.messages); // Redux에서 메시지 불러오기
 
-  // 목업 메시지
-  const messages = [
-    {
-      id: 'black',
-      sender: 'bot',
-      text: '왜 밥이 안 나와? 내가 얼마나 기다렸는지 알아?!',
-    },
-    {
-      id: 'white',
-      sender: 'bot',
-      text: '안녕하세요! 만나서 정말 기뻐요!',
-    },
-    { id: 'black', sender: 'bot', text: '배고파! 지금 당장 밥 줘!' },
-    {
-      id: 'white',
-      sender: 'bot',
-      text: '와! 여기 너무 좋아요! 놀고 싶어요!',
-    },
-  ];
-
+  console.log(messages);
   const handleToggleChat = () => {
     setIsChatOpen(!isChatOpen);
   };
@@ -31,62 +14,43 @@ export default function WolfBadge() {
   return (
     <div className="relative">
       <div className="absolute bottom-4 right-4">
-        <button
+        <img
+          src="src/assets/inversefaust.png"
+          alt="Black Wolf"
+          className="w-20 h-20 object-contain" // 크기를 32x32로 설정
           onClick={handleToggleChat}
-          className="p-3 bg-green-700 text-white rounded-full shadow-lg hover:bg-green-800"
-        >
-          <WolfIcon />
-        </button>
+        />
       </div>
 
       {isChatOpen && (
         <div className="absolute bottom-16 right-4 w-80 h-96 bg-white border border-gray-300 rounded-lg shadow-lg flex flex-col">
           {/* 채팅 창 헤더 */}
           <div className="p-3 bg-gray-500 text-white rounded-t-lg">
-            늑대들의 메세지
+            AI의 조언
           </div>
 
           {/* 메시지 영역 */}
           <div className="flex-1 p-3 overflow-y-auto">
-            {messages.map(message => (
-              <div key={message.text} className="flex mb-2 items-center">
-                {/* 프로필 뱃지 */}
-                <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
-                  {/* id에 따라 글씨 색상 변경 */}
-                  {message.id === 'black' ? (
+            {messages &&
+              messages.map((message, index) => (
+                <div key={index} className="flex mb-2 items-center">
+                  {/* 프로필 뱃지 */}
+                  <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
+                    {/* id에 따라 글씨 색상 변경 */}
                     <img
                       src="src/assets/blackwolfchat.png"
                       alt="Black Wolf"
-                      className="w-8 h-8 object-cover"
+                      className="w-8 h-8 object-cover" // 크기를 32x32로 설정
                     />
-                  ) : (
-                    <img
-                      src="src/assets/whitewolfchat.png"
-                      alt="White Wolf"
-                      className="w-8 h-8 object-cover"
-                    />
-                  )}
-                </div>
+                  </div>
 
-                {/* 메시지 내용 */}
-                <div
-                  className={`p-2 rounded-lg flex-1 ${
-                    message.sender === 'bot'
-                      ? 'bg-gray-100'
-                      : 'bg-green-500 text-white'
-                  }`}
-                >
-                  {/* 메시지 텍스트 색상 변경 */}
-                  <span
-                    className={`${
-                      message.id === 'black' ? 'text-red-500' : 'text-blue-500'
-                    }`}
-                  >
-                    {message.text}
-                  </span>
+                  {/* 메시지 내용 */}
+                  <div className="p-2 rounded-lg flex-1 bg-gray-100">
+                    {/* 메시지 텍스트 */}
+                    <span className="text-red-500">{message.text}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
 
           {/* 채팅 창 닫기 버튼 */}

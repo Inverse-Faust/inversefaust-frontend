@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import CardSection from '../components/CardSection';
+import CartIcon from '../Icons/CartIcon';
 
 export default function ActivityPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,13 +50,18 @@ export default function ActivityPage() {
   };
 
   // 초기 상태로 목업 데이터를 설정
-  React.useEffect(() => {
+  useEffect(() => {
     setFilteredCards(mockData);
   }, []);
 
   return (
     <div className="flex flex-col items-center p-4 min-h-[calc(100vh-60px)] w-full">
-      <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
+      {/* flex container로 SearchBar와 CartIcon을 가로로 배치 */}
+      <div className="flex items-center justify-between w-full max-w-lg mb-4">
+        <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
+        <div className="w-4" />
+        <CartIcon />
+      </div>
       <CardSection filteredCards={filteredCards} />
     </div>
   );

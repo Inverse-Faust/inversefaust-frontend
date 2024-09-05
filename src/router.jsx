@@ -4,6 +4,7 @@ import DiaryPage from './pages/DiaryPage';
 import WritePage from './pages/WritePage';
 import HomePage from './pages/HomePage';
 import ActivityPage from './pages/ActivityPage';
+import { submitEntryAction } from './hooks/action';
 
 export const router = createBrowserRouter([
   {
@@ -11,8 +12,8 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'diarywrite', element: <WritePage /> },
       { path: 'foodwrite', element: <ActivityPage /> },
+      { path: 'diarywrite', element: <WritePage />, action: submitEntryAction },
       { path: 'diarysee', element: <DiaryPage /> },
     ],
   },
