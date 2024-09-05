@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import DiarySeePage from './pages/DiarySeePage';
-import DiaryWritePage from './pages/DiaryWritePage';
-import FoodWritePage from './pages/FoodWritePage';
+import DiaryPage from './pages/DiaryPage';
+import WritePage from './pages/WritePage';
 import HomePage from './pages/HomePage';
+import ActivityPage from './pages/ActivityPage';
 
 export const router = createBrowserRouter([
   {
@@ -11,9 +11,9 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'diarywrite', element: <DiaryWritePage /> },
-      { path: 'foodwrite', element: <FoodWritePage /> },
-      { path: 'diarysee', element: <DiarySeePage /> },
+      { path: 'diarywrite', element: <WritePage /> },
+      { path: 'foodwrite', element: <ActivityPage /> },
+      { path: 'diarysee', element: <DiaryPage /> },
     ],
   },
 ]);

@@ -7,41 +7,41 @@ export default function MeatIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g id="icon / tabler-icons / meat" clip-path="url(#clip0_108_14231)">
+      <g id="icon / tabler-icons / meat" clipPath="url(#clip0_108_14231)">
         <path
           id="Vector"
           d="M13.62 8.38198L15.586 6.41498C15.3534 6.18245 15.1817 5.89615 15.0862 5.58144C14.9907 5.26673 14.9742 4.93331 15.0384 4.61073C15.1025 4.28815 15.2451 3.98635 15.4537 3.73208C15.6623 3.4778 15.9304 3.27889 16.2342 3.15296C16.5381 3.02703 16.8682 2.97797 17.1956 3.01013C17.5229 3.04229 17.8372 3.15468 18.1107 3.33733C18.3842 3.51998 18.6085 3.76727 18.7636 4.05728C18.9187 4.34729 18.9999 4.67109 19 4.99998C19.329 4.99974 19.6529 5.08066 19.9431 5.23556C20.2334 5.39047 20.4809 5.61457 20.6638 5.88801C20.8467 6.16145 20.9593 6.47579 20.9917 6.80317C21.0241 7.13055 20.9752 7.46085 20.8494 7.76482C20.7236 8.06879 20.5247 8.33703 20.2705 8.54578C20.0162 8.75452 19.7144 8.89732 19.3917 8.96152C19.0691 9.02572 18.7356 9.00934 18.4208 8.91383C18.106 8.81832 17.8196 8.64663 17.587 8.41398L15.767 10.235"
           stroke="#21272A"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           fill="bla#21272Ack"
         />
         <path
           id="Vector_2"
           d="M5.90364 18.5963C8.63731 21.33 11.8031 22.5963 12.9747 21.4247C14.1463 20.2532 12.88 17.0873 10.1463 14.3537C7.41261 11.62 4.24679 10.3537 3.07521 11.5253C1.90364 12.6968 3.16997 15.8626 5.90364 18.5963Z"
           stroke="#21272A"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           fill="#21272A"
         />
         <path
           id="Vector_3"
           d="M7.5 16L8.5 17"
           stroke="#21272A"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           fill="#21272A"
         />
         <path
           id="Vector_4"
           d="M12.975 21.425C16.88 17.519 17.83 12.137 15.096 9.40403C12.363 6.67003 6.98105 7.62003 3.07605 11.525"
           stroke="#21272A"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           fill="#21272A"
         />
       </g>

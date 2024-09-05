@@ -9,7 +9,7 @@ export default function PencilIcon() {
     >
       <g
         id="icon / bootstrap / filled / pen-fill"
-        clip-path="url(#clip0_109_24319)"
+        clipPath="url(#clip0_109_24319)"
       >
         <path
           id="Vector"

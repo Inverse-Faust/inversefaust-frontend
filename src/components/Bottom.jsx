@@ -25,7 +25,7 @@ export default function Bottom() {
     },
     {
       id: 3,
-      label: 'Food',
+      label: 'Activty',
       route: '/foodwrite',
       icon: <MeatIcon />,
     },
@@ -43,18 +43,20 @@ export default function Bottom() {
   };
 
   return (
-    <div className="MaterialYouBottomNavigationBar w-full h-24 bg-zinc-600 flex-col justify-center items-center inline-flex fixed bottom-0">
-      <div className="Tabs self-stretch h-full w-full flex justify-center items-center">
+    <div className="MaterialYouBottomNavigationBar w-full bg-zinc-600 flex justify-center items-center">
+      <div className="Tabs w-full flex justify-center items-center max-w-4xl">
         {tabs.map(tab => (
           <div
             key={tab.id}
-            className={`grow shrink basis-0 self-stretch h-full flex-col justify-center items-center gap-1.5 inline-flex ${activeTab === tab.id ? 'bg-gray-500' : ''}`}
+            className={`grow shrink basis-0 h-16 flex flex-col justify-center items-center gap-1.5 ${
+              activeTab === tab.id ? 'bg-gray-500' : ''
+            }`}
             onClick={() => handleClick(tab.id, tab.route)}
           >
-            <div className="Icon w-full h-8 px-5 py-1 rounded-3xl justify-center items-center flex">
+            <div className="Icon w-full h-8 px-5 py-1 rounded-3xl flex justify-center items-center">
               {tab.icon}
             </div>
-            <div className="Label self-stretch text-center text-stone-300 text-xs font-medium font-['Roboto'] leading-none tracking-wide">
+            <div className="Label w-full text-center text-stone-300 text-xs font-medium leading-none tracking-wide">
               {tab.label}
             </div>
           </div>
