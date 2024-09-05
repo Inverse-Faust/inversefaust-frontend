@@ -6,19 +6,15 @@ const cartSlice = createSlice({
   initialState: [],
   reducers: {
     addToCart: (state, action) => {
+      // 액션의 payload를 카트에 추가
       state.push(action.payload);
     },
     removeFromCart: (state, action) => {
-      return state.filter(item => item.id !== action.payload.id);
-    },
-    updateQuantity: (state, action) => {
-      const item = state.find(item => item.id === action.payload.id);
-      if (item) {
-        item.quantity = action.payload.quantity;
-      }
+      // 주어진 id와 일치하는 항목을 제거
+      return state.filter(item => item.id !== action.payload);
     },
   },
 });
 
-export const { addToCart, removeFromCart, updateQuantity } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

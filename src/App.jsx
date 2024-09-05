@@ -8,15 +8,16 @@ function App() {
     <div className="min-h-screen flex flex-col">
       {/* 자식 라우트가 렌더링되는 위치 */}
       <div className="flex-grow flex flex-col justify-center items-center bg-black w-full">
-        <div className="relative w-full bg-white">
+        <div className="relative w-full bg-white max-w-full sm:max-w-4xl">
+          {/* max-w-full로 변경하여 유연한 대응 */}
           {/* Outlet을 통해 자식 컴포넌트 렌더링 */}
           <Outlet />
           <WolfBadge />
         </div>
-      </div>
-      {/* 하단 네비게이션 바 */}
-      <div className="w-full">
-        <Bottom />
+        <div className="relative w-full bg-white max-w-full sm:max-w-4xl">
+          {/* max-w-full로 변경 */}
+          <Bottom />
+        </div>
       </div>
     </div>
   );

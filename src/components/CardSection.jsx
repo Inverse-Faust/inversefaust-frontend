@@ -1,19 +1,45 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'; // Redux의 useDispatch 훅 가져오기
+import { addToCart } from '../store/cartSlice'; // cartSlice에서 addToCart 액션 가져오기
 
 export default function CardSection({ filteredCards }) {
   const [selectedCard, setSelectedCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [timeSpent, setTimeSpent] = useState(''); // 시간을 입력받기 위한 상태
+  const [purpose, setPurpose] = useState('휴식하기'); // 목적을 입력받기 위한 상태
+  const dispatch = useDispatch(); // Redux dispatch 사용
 
   // 모달 닫기
   const closeModal = () => {
     setSelectedCard(null);
     setIsModalOpen(false);
+    setTimeSpent(''); // 모달이 닫힐 때 입력된 값 초기화
+    setPurpose('휴식하기');
   };
 
   // 모달 열기
   const openModal = card => {
     setSelectedCard(card);
     setIsModalOpen(true);
+  };
+
+  // 전송 버튼 클릭 시 카트에 데이터 추가
+  const handleSend = () => {
+    if (selectedCard && timeSpent) {
+      // 카트에 추가할 데이터를 dispatch
+      dispatch(
+        addToCart({
+          title: selectedCard.title,
+          timeSpent: timeSpent,
+          purpose: purpose,
+        })
+      );
+
+      alert('카트에 추가되었습니다!');
+      closeModal(); // 모달 닫기
+    } else {
+      alert('시간을 입력해주세요.');
+    }
   };
 
   return (
@@ -56,11 +82,17 @@ export default function CardSection({ filteredCards }) {
               placeholder="시간을 입력하세요"
               min="0"
               step="0.5" // 0.5 단위로 시간 입력 (30분 단위)
+              value={timeSpent}
+              onChange={e => setTimeSpent(e.target.value)}
             />
 
             {/* 행위 선택 옵션 */}
             <label className="block text-lg mb-2">어떤 목적이였나요?</label>
-            <select className="w-full p-2 border rounded-lg">
+            <select
+              className="w-full p-2 border rounded-lg"
+              value={purpose}
+              onChange={e => setPurpose(e.target.value)}
+            >
               <option>휴식하기</option>
               <option>공부하기</option>
             </select>
@@ -75,7 +107,7 @@ export default function CardSection({ filteredCards }) {
               </button>
               <button
                 className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-                onClick={() => alert('전송되었습니다!')}
+                onClick={handleSend}
               >
                 전송
               </button>
