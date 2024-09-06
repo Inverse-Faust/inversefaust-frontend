@@ -13,7 +13,7 @@ export default function WolfBadge() {
     <div className="relative">
       <div className="absolute bottom-4 right-4">
         <img
-          src="src/assets/inversefaust.png"
+          src="public/assets/inversefaust.png"
           alt="Black Wolf"
           className="w-20 h-20 object-contain" // 크기를 32x32로 설정
           onClick={handleToggleChat}

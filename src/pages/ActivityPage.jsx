@@ -3,39 +3,15 @@ import SearchBar from '../components/SearchBar';
 import CardSection from '../components/CardSection';
 import CartIcon from '../Icons/CartIcon';
 import Cart from '../components/Cart'; // Cart 컴포넌트 import
+import { useLoaderData } from 'react-router-dom';
 
 export default function ActivityPage() {
+  const mockData = useLoaderData();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredCards, setFilteredCards] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false); // 모달 상태 추가
 
   // 목업 데이터
-  const mockData = [
-    {
-      id: 1,
-      title: '유튜브 시청하기',
-      description: 'A majestic white wolf in the forest.',
-      imageUrl: 'src/assets/white_wolf.png',
-    },
-    {
-      id: 2,
-      title: '운동하기',
-      description: 'A fierce black wolf in the wild.',
-      imageUrl: 'src/assets/black_wolf.png',
-    },
-    {
-      id: 3,
-      title: '명상하기',
-      description: 'A clever fox in the mountains.',
-      imageUrl: 'src/assets/fox.png',
-    },
-    {
-      id: 4,
-      title: '야식',
-      description: 'An eagle soaring through the sky.',
-      imageUrl: 'src/assets/eagle.png',
-    },
-  ];
 
   // 검색어에 따라 카드 필터링
   const handleSearch = e => {

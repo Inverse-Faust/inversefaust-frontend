@@ -32,16 +32,16 @@ export default function HomePage() {
   const getWolfImage = (hp, type) => {
     if (hp > 50) {
       return type === 'white'
-        ? 'src/assets/white_wolf_happy.png'
-        : 'src/assets/black_wolf_happy.png';
+        ? 'public/assets/white_wolf_happy.png'
+        : 'public/assets/black_wolf_happy.png';
     } else if (hp > 10) {
       return type === 'white'
-        ? 'src/assets/white_wolf.png'
-        : 'src/assets/black_wolf.png';
+        ? 'public/assets/white_wolf.png'
+        : 'public/assets/black_wolf.png';
     } else {
       return type === 'white'
-        ? 'src/assets/white_wolf_sad.png'
-        : 'src/assets/black_wolf_mad.png';
+        ? 'public/assets/white_wolf_sad.png'
+        : 'public/assets/black_wolf_mad.png';
     }
   };
 
@@ -49,7 +49,7 @@ export default function HomePage() {
     <div
       className="flex flex-col justify-end items-center p-4 min-h-screen w-full bg-cover bg-center"
       style={{
-        backgroundImage: "url('src/assets/background.png')",
+        backgroundImage: "url('public/assets/background.png')",
       }}
     >
       <div className="flex justify-center items-center w-full">

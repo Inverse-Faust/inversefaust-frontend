@@ -1,6 +1,6 @@
 import wolfScore from '../utils/score';
 
-export default async function homeLoader() {
+export async function homeLoader() {
   // 실제 백엔드가 있을 때는 axios로 데이터 가져오기
   // const response = await axios.get('/api/data');
   // return response.data;
@@ -18,6 +18,37 @@ export default async function homeLoader() {
   ];
 
   const wild = wolfScore(mockData);
+  console.log(wild);
   // 현재는 mock 데이터를 사용
   return wild;
+}
+
+export async function ActivityLoader() {
+  const mockData = [
+    {
+      id: 1,
+      title: '유튜브 시청하기',
+      description: 'A majestic white wolf in the forest.',
+      imageUrl: 'src/assets/white_wolf.png',
+    },
+    {
+      id: 2,
+      title: '운동하기',
+      description: 'A fierce black wolf in the wild.',
+      imageUrl: 'src/assets/black_wolf.png',
+    },
+    {
+      id: 3,
+      title: '명상하기',
+      description: 'A clever fox in the mountains.',
+      imageUrl: 'src/assets/fox.png',
+    },
+    {
+      id: 4,
+      title: '야식',
+      description: 'An eagle soaring through the sky.',
+      imageUrl: 'src/assets/eagle.png',
+    },
+  ];
+  return mockData;
 }
