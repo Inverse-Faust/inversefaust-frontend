@@ -13,6 +13,8 @@ FROM nginx:alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
+COPY --from=build /app/src/assets /usr/share/nginx/html/assets
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
