@@ -29,7 +29,7 @@ function DiaryCard({ diary, onSave }) {
         {Object.entries(diary.activityList).map(([activity, time], index) => (
           <span
             key={index}
-            className="bg-blue-500 text-white px-2 py-1 rounded-full text-sm whitespace-nowrap"
+            className="bg-blue-400 text-white px-2 py-1 rounded-full text-sm whitespace-nowrap"
           >
             #{activity}: {time}분
           </span>
