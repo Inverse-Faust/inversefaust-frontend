@@ -5,7 +5,6 @@ export default function WolfBadge() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const messages = useSelector(state => state.messages); // Redux에서 메시지 불러오기
 
-  console.log(messages);
   const handleToggleChat = () => {
     setIsChatOpen(!isChatOpen);
   };

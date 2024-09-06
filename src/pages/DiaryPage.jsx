@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useSubmit } from 'react-router-dom';
 
 function DiaryCard({ diary, onSave }) {
   const [isEditing, setIsEditing] = useState(false); // 편집 모드 상태
@@ -14,7 +14,7 @@ function DiaryCard({ diary, onSave }) {
   const handleSaveClick = () => {
     setIsEditing(false);
     // API 요청을 보내기 위해 onSave 호출
-    onSave(diary.id, editedContent);
+    onSave(diary.diaryId, editedContent);
   };
 
   return (
@@ -74,12 +74,18 @@ function DiaryCard({ diary, onSave }) {
 // DiaryPage 컴포넌트: 여러 개의 일기 카드를 날짜별로 렌더링
 export default function DiaryPage() {
   const diaries = useLoaderData(); // 수정: mockDiaries를 사용하지 않고 loader에서 받은 데이터 사용
+  const submit = useSubmit(); // React Router의 submit 함수 사용
+
   console.log(diaries);
 
-  // API 요청을 시뮬레이션하는 함수
+  // 데이터를 action으로 넘기는 함수
   const handleSave = (id, newContent) => {
-    console.log(`Diary ${id} has been updated with new content:`, newContent);
-    // 여기에 API 요청 코드 추가 가능
+    const formData = new FormData();
+    formData.append('id', id);
+    formData.append('content', newContent);
+
+    // submit을 이용하여 action으로 formData를 전달
+    submit(formData, { method: 'post', action: `/diarysee` });
   };
 
   return (
@@ -89,8 +95,8 @@ export default function DiaryPage() {
 
       {/* 다이어리 카드 섹션 */}
       <div className="w-full max-w-4xl">
-        {diaries.map((diary, index) => (
-          <DiaryCard key={index} diary={diary} onSave={handleSave} />
+        {diaries.map(diary => (
+          <DiaryCard key={diary.diaryId} diary={diary} onSave={handleSave} />
         ))}
       </div>
     </div>

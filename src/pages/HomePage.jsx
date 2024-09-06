@@ -3,12 +3,30 @@ import { useLoaderData } from 'react-router-dom';
 import { useSelector } from 'react-redux'; // react-redux에서 useSelector를 가져옴
 
 // HPBar 컴포넌트
-function HPBar({ hp }) {
+function HPBar_White({ hp }) {
   const maxHp = 100; // 최대 HP 값 설정
   const hpPercentage = (hp / maxHp) * 100; // HP 퍼센트 계산
 
   // HP에 따라 색상 변경 (예: 50% 이하일 때 빨간색)
-  const hpBarColor = hp > 50 ? 'bg-green-500' : 'bg-red-500';
+  const hpBarColor = hp > 20 ? 'bg-green-500' : 'bg-red-500';
+
+  return (
+    <div className="relative w-full bg-gray-300 h-6 rounded-full overflow-hidden">
+      {/* HP 바 */}
+      <div
+        className={`${hpBarColor} h-full`}
+        style={{ width: `${hpPercentage}%` }}
+      ></div>
+    </div>
+  );
+}
+
+function HPBar_Black({ hp }) {
+  const maxHp = 100; // 최대 HP 값 설정
+  const hpPercentage = (hp / maxHp) * 100; // HP 퍼센트 계산
+
+  // HP에 따라 색상 변경 (예: 50% 이하일 때 빨간색)
+  const hpBarColor = 20 < hp && hp < 80 ? 'bg-green-500' : 'bg-red-500';
 
   return (
     <div className="relative w-full bg-gray-300 h-6 rounded-full overflow-hidden">
@@ -23,6 +41,7 @@ function HPBar({ hp }) {
 
 export default function HomePage() {
   const data = useLoaderData();
+  console.log(data);
   const whiteWolfHp = data.white;
   const blackWolfHp = data.black;
 
@@ -47,11 +66,11 @@ export default function HomePage() {
   }, [messages]); // 메시지가 변경될 때마다 실행
 
   const getWolfImage = (hp, type) => {
-    if (hp > 50) {
+    if (hp > 80) {
       return type === 'white'
         ? 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/white_wolf_happy.png'
         : 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/black_wolf_happy.png';
-    } else if (hp > 10) {
+    } else if (hp > 20) {
       return type === 'white'
         ? 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/white_wolf.png'
         : 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/black_wolf.png';
@@ -80,7 +99,7 @@ export default function HomePage() {
               className="w-full h-auto max-w-xs object-contain mb-2"
               style={{ transform: 'scale(2.5) translateY(-10px)' }} // 이미지를 위로 20px 이동
             />
-            <HPBar hp={whiteWolfHp} className="" />
+            <HPBar_White hp={whiteWolfHp} />
           </div>
           {/* 검은 늑대 섹션 */}
           <div className="flex flex-col justify-center items-center">
@@ -90,7 +109,7 @@ export default function HomePage() {
               className="w-full h-auto max-w-xs object-contain mb-2"
               style={{ transform: 'scale(2.5) translateY(-10px)' }}
             />
-            <HPBar hp={blackWolfHp} />
+            <HPBar_Black hp={blackWolfHp} />
           </div>
         </div>
       </div>

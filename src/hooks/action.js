@@ -25,3 +25,26 @@ export async function submitEntryAction({ request }) {
     return null;
   }
 }
+
+export async function DiaryAction({ request }) {
+  const formData = await request.formData();
+  const id = formData.get('id');
+  const newContent = formData.get('content');
+
+  try {
+    // 실제 API 요청을 통해 서버로 데이터를 전송합니다.
+    const response = await axios.put(`${apiUrl}/api/diary/${id}`, {
+      contents: newContent,
+    });
+
+    if (response.status === 200) {
+      // 성공 시 현재 페이지로 리다이렉트하여 페이지를 다시 로드
+      return redirect('');
+    } else {
+      return { success: false, message: 'Failed to update diary' };
+    }
+  } catch (error) {
+    console.error('Error updating diary:', error);
+    return { success: false, message: 'Error updating diary' };
+  }
+}

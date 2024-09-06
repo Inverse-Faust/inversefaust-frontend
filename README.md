@@ -15,3 +15,5 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 
 npm install vite-plugin-static-copy --save-dev
+
+npm install axios

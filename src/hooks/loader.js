@@ -5,27 +5,27 @@ import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 export async function homeLoader() {
-  // 실제 백엔드가 있을 때는 axios로 데이터 가져오기
-  // const response = await axios.get(`${apiUrl}/api/user/score/user1`);
-  // return response.data;
-
-  const mockData = [
-    {
-      white_score: 50,
-      black_score: 40,
-      dateTime: '2024-09-06T17:08:33',
-    },
-    {
-      white_score: 50,
-      black_score: 40,
-      dateTime: '2024-09-06T17:08:20',
-    },
-  ];
-
-  const wild = wolfScore(mockData);
-  console.log(wild);
-  // 현재는 mock 데이터를 사용
-  return wild;
+  try {
+    // 실제 백엔드가 있을 때는 axios로 데이터 가져오기
+    const response = await axios.get(`${apiUrl}/api/user/score/user1`);
+    return wolfScore(response.data); // 성공 시 백엔드에서 받은 데이터 처리
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    // 에러 발생 시 mockData 반환
+    const mockData = [
+      {
+        white_score: 50,
+        black_score: 40,
+        dateTime: '2024-09-06T17:08:33',
+      },
+      {
+        white_score: 50,
+        black_score: 40,
+        dateTime: '2024-09-06T17:08:20',
+      },
+    ];
+    return wolfScore(mockData); // mockData로 wolfScore 계산
+  }
 }
 
 export async function ActivityLoader() {
