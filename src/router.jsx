@@ -5,7 +5,7 @@ import WritePage from './pages/WritePage';
 import HomePage from './pages/HomePage';
 import ActivityPage from './pages/ActivityPage';
 import { submitEntryAction } from './hooks/action';
-import { homeLoader, ActivityLoader } from './hooks/loader';
+import { homeLoader, ActivityLoader, DiaryLoader } from './hooks/loader';
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage />, loader: homeLoader },
       { path: 'foodwrite', element: <ActivityPage />, loader: ActivityLoader },
       { path: 'diarywrite', element: <WritePage />, action: submitEntryAction },
-      { path: 'diarysee', element: <DiaryPage /> },
+      { path: 'diarysee', element: <DiaryPage />, loader: DiaryLoader },
       { path: 'cart/send' }, // 장바구니 전송 action 추가
     ],
   },

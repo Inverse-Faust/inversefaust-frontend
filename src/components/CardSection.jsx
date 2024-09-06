@@ -47,13 +47,13 @@ export default function CardSection({ filteredCards }) {
       <div className="grid grid-cols-1 gap-3 w-full mt-6">
         {filteredCards.map(card => (
           <div
-            key={card.id}
+            key={card.activityId}
             className="bg-white rounded-lg shadow-md p-4 flex cursor-pointer w-full"
             onClick={() => openModal(card)}
           >
             <div className="flex flex-col justify-center w-full">
-              <h2 className="text-xl font-bold mb-2">{card.title}</h2>
-              <p className="text-gray-600">{card.description}</p>
+              <h2 className="text-xl font-bold mb-2">{card.activityName}</h2>
+              <p className="text-gray-600">{card.purpose}</p>
             </div>
           </div>
         ))}

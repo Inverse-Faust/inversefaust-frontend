@@ -49,16 +49,16 @@ export default function HomePage() {
   const getWolfImage = (hp, type) => {
     if (hp > 50) {
       return type === 'white'
-        ? '/src/assets/white_wolf_happy.png'
-        : '/src/assets/black_wolf_happy.png';
+        ? 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/white_wolf_happy.png'
+        : 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/black_wolf_happy.png';
     } else if (hp > 10) {
       return type === 'white'
-        ? '/src/assets/white_wolf.png'
-        : '/src/assets/black_wolf.png';
+        ? 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/white_wolf.png'
+        : 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/black_wolf.png';
     } else {
       return type === 'white'
-        ? '/src/assets/white_wolf_sad.png'
-        : '/src/assets/black_wolf_mad.png';
+        ? 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/white_wolf_sad.png'
+        : 'https://inversefaust.s3.ap-northeast-2.amazonaws.com/black_wolf_mad.png';
     }
   };
 
@@ -66,10 +66,11 @@ export default function HomePage() {
     <div
       className="flex flex-col justify-end items-center p-4 min-h-[calc(100vh-60px)] w-full bg-cover bg-center"
       style={{
-        backgroundImage: "url('/src/assets/background.png')",
+        backgroundImage:
+          "url('https://inversefaust.s3.ap-northeast-2.amazonaws.com/background.png')",
       }}
     >
-      <div className="flex justify-center items-center w-full">
+      <div className="flex justify-center items-center w-full pb-20">
         <div className="grid grid-cols-2 gap-8 w-full max-w-3xl">
           {/* 흰 늑대 섹션 */}
           <div className="flex flex-col justify-center items-center">
@@ -77,8 +78,9 @@ export default function HomePage() {
               src={getWolfImage(whiteWolfHp, 'white')}
               alt="White Wolf"
               className="w-full h-auto max-w-xs object-contain mb-2"
+              style={{ transform: 'scale(2.5) translateY(-10px)' }} // 이미지를 위로 20px 이동
             />
-            <HPBar hp={whiteWolfHp} />
+            <HPBar hp={whiteWolfHp} className="" />
           </div>
           {/* 검은 늑대 섹션 */}
           <div className="flex flex-col justify-center items-center">
@@ -86,6 +88,7 @@ export default function HomePage() {
               src={getWolfImage(blackWolfHp, 'black')}
               alt="Black Wolf"
               className="w-full h-auto max-w-xs object-contain mb-2"
+              style={{ transform: 'scale(2.5) translateY(-10px)' }}
             />
             <HPBar hp={blackWolfHp} />
           </div>
@@ -94,7 +97,7 @@ export default function HomePage() {
 
       {/* 화면 중앙에 메시지 표시 */}
       {showMessage && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white p-4 rounded-lg shadow-lg text-center">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[60%] bg-[#737379] text-white p-4 rounded-lg shadow-lg text-center w-[400px] opacity-85">
           {visibleMessage}
         </div>
       )}

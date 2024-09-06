@@ -1,29 +1,9 @@
 import React, { useState } from 'react';
-
-const mockDiaries = [
-  {
-    id: 1,
-    content: '오늘은 정말 좋은 날이었어. 산책을 하면서 기분이 상쾌했어.',
-    hashtags: ['명상 유튜브 1시간', '숏츠 3시간', '운동 2시간', '공부 4시간'],
-    date: '2023-09-01',
-  },
-  {
-    id: 2,
-    content: '운동을 열심히 했고, 건강해지는 느낌이 들어서 좋았어.',
-    hashtags: ['명상 유튜브 1시간', '숏츠 3시간', '운동 2시간', '공부 4시간'],
-    date: '2023-09-02',
-  },
-  {
-    id: 3,
-    content: '오늘은 일을 많이 했는데, 피곤하지만 뿌듯해.',
-    hashtags: ['명상 유튜브 1시간', '숏츠 3시간', '운동 2시간', '공부 4시간'],
-    date: '2023-09-03',
-  },
-];
+import { useLoaderData } from 'react-router-dom';
 
 function DiaryCard({ diary, onSave }) {
   const [isEditing, setIsEditing] = useState(false); // 편집 모드 상태
-  const [editedContent, setEditedContent] = useState(diary.content); // 수정된 content 상태
+  const [editedContent, setEditedContent] = useState(diary.diaryContent); // 수정된 diaryContent 상태
 
   // 편집 버튼 클릭 핸들러
   const handleEditClick = () => {
@@ -40,16 +20,18 @@ function DiaryCard({ diary, onSave }) {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 flex flex-col mb-4">
       {/* 날짜 */}
-      <span className="text-sm text-gray-500 mb-1">{diary.date}</span>
+      <span className="text-sm text-gray-500 mb-1">
+        {new Date(diary.date).toLocaleDateString()}
+      </span>
 
-      {/* 해시태그 부분 */}
-      <div className="flex overflow-x-auto space-x-2 pb-2 mb-4 border-b-2 border-gray-200">
-        {(diary.hashtags || []).map((tag, index) => (
+      {/* 활동 리스트 */}
+      <div className="flex flex-wrap space-x-2 pb-2 mb-4 border-b-2 border-gray-200">
+        {Object.entries(diary.activityList).map(([activity, time], index) => (
           <span
             key={index}
             className="bg-blue-500 text-white px-2 py-1 rounded-full text-sm whitespace-nowrap"
           >
-            #{tag}
+            #{activity}: {time}분
           </span>
         ))}
       </div>
@@ -63,7 +45,7 @@ function DiaryCard({ diary, onSave }) {
             onChange={e => setEditedContent(e.target.value)}
           />
         ) : (
-          <p>{diary.content}</p>
+          <p>{diary.diaryContent}</p>
         )}
       </div>
 
@@ -90,11 +72,13 @@ function DiaryCard({ diary, onSave }) {
 }
 
 // DiaryPage 컴포넌트: 여러 개의 일기 카드를 날짜별로 렌더링
-export default function DiaryPage({ diaries = mockDiaries }) {
+export default function DiaryPage() {
+  const diaries = useLoaderData(); // 수정: mockDiaries를 사용하지 않고 loader에서 받은 데이터 사용
+
   // API 요청을 시뮬레이션하는 함수
   const handleSave = (id, newContent) => {
     console.log(`Diary ${id} has been updated with new content:`, newContent);
-    // 실제로는 여기서 API 요청을 보내면 됩니다.
+    // 여기에 API 요청 코드 추가 가능
   };
 
   return (
@@ -104,8 +88,8 @@ export default function DiaryPage({ diaries = mockDiaries }) {
 
       {/* 다이어리 카드 섹션 */}
       <div className="w-full max-w-4xl">
-        {diaries.map(diary => (
-          <DiaryCard key={diary.id} diary={diary} onSave={handleSave} />
+        {diaries.map((diary, index) => (
+          <DiaryCard key={index} diary={diary} onSave={handleSave} />
         ))}
       </div>
     </div>
