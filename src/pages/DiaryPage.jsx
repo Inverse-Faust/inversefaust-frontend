@@ -74,6 +74,7 @@ function DiaryCard({ diary, onSave }) {
 // DiaryPage 컴포넌트: 여러 개의 일기 카드를 날짜별로 렌더링
 export default function DiaryPage() {
   const diaries = useLoaderData(); // 수정: mockDiaries를 사용하지 않고 loader에서 받은 데이터 사용
+  console.log(diaries);
 
   // API 요청을 시뮬레이션하는 함수
   const handleSave = (id, newContent) => {

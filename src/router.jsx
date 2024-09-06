@@ -16,7 +16,6 @@ export const router = createBrowserRouter([
       { path: 'foodwrite', element: <ActivityPage />, loader: ActivityLoader },
       { path: 'diarywrite', element: <WritePage />, action: submitEntryAction },
       { path: 'diarysee', element: <DiaryPage />, loader: DiaryLoader },
-      { path: 'cart/send' }, // 장바구니 전송 action 추가
     ],
   },
 ]);

@@ -1,3 +1,4 @@
+import activityContraction from '../utils/activity';
 import wolfScore from '../utils/score';
 import axios from 'axios';
 
@@ -30,8 +31,7 @@ export async function homeLoader() {
 export async function ActivityLoader() {
   try {
     const response = await axios.get(`${apiUrl}/api/activity`);
-    // 요청이 성공하면 실제 API 데이터를 반환
-    return response.data;
+    return activityContraction(response.data);
   } catch (error) {
     console.error('Error fetching activity data:', error);
   }
@@ -78,7 +78,7 @@ export async function DiaryLoader() {
 
   try {
     const response = await axios.get(`${apiUrl}/api/history/user1`);
-
+    console.log(response);
     // 응답이 성공적일 경우 데이터 반환
     if (response.status === 200 && response.data) {
       return response.data; // 실제 데이터를 반환

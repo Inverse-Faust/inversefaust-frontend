@@ -6,7 +6,7 @@ import Cart from '../components/Cart'; // Cart 컴포넌트 import
 import { useLoaderData } from 'react-router-dom';
 
 export default function ActivityPage() {
-  const mockData = useLoaderData(); // useLoaderData를 통해 mockData 로드
+  const contractedData = useLoaderData(); // useLoaderData를 통해 mockData 로드
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredCards, setFilteredCards] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false); // 모달 상태 추가
@@ -16,19 +16,19 @@ export default function ActivityPage() {
     const term = e.target.value;
     setSearchTerm(term);
     if (term !== '') {
-      const filtered = mockData.filter(card =>
-        card.activityName.toLowerCase().includes(term.toLowerCase())
+      const filtered = Object.keys(contractedData).filter(activityName =>
+        activityName.toLowerCase().includes(term.toLowerCase())
       );
       setFilteredCards(filtered);
     } else {
-      setFilteredCards(mockData);
+      setFilteredCards(Object.keys(contractedData));
     }
   };
 
   // 초기 상태로 mockData를 설정
   useEffect(() => {
-    setFilteredCards(mockData);
-  }, [mockData]);
+    setFilteredCards(Object.keys(contractedData));
+  }, [contractedData]);
 
   // 장바구니 모달을 토글하는 함수
   const toggleCart = () => {
@@ -43,7 +43,10 @@ export default function ActivityPage() {
         <CartIcon onClick={toggleCart} />
         {/* 클릭 시 모달 토글 */}
       </div>
-      <CardSection filteredCards={filteredCards} />
+      <CardSection
+        filteredCards={filteredCards}
+        contractedData={contractedData}
+      />
 
       {/* 장바구니 모달 조건부 렌더링 */}
       {isCartOpen && <Cart />}

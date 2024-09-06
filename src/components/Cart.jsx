@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, clearCart } from '../store/cartSlice'; // clearCart 액션 추가
 import axios from 'axios';
 
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
 const Cart = () => {
   const cartItems = useSelector(state => state.cart);
   const dispatch = useDispatch();
@@ -14,10 +16,13 @@ const Cart = () => {
   // 전송 버튼을 클릭했을 때 Axios로 POST 요청
   const handleSend = async () => {
     try {
+      const data = cartItems.map(cartItem => ({
+        activityId: cartItem.activityId,
+        activityDuration: cartItem.timeSpent, // timeSpent를 activityDuration으로 변경
+        purpose: cartItem.purpose,
+      }));
       // Axios로 POST 요청을 보내서 데이터를 전송
-      // await axios.post('/api/cart/send', cartItems);
-      console.log(cartItems);
-      // 전송 후 카트를 비움
+      await axios.post(`${apiUrl}/api/activity/user1`, data);
       dispatch(clearCart());
     } catch (error) {
       console.error('전송 실패:', error);
