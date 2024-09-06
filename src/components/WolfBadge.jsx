@@ -5,7 +5,6 @@ export default function WolfBadge() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const messages = useSelector(state => state.messages); // Redux에서 메시지 불러오기
 
-  console.log(messages);
   const handleToggleChat = () => {
     setIsChatOpen(!isChatOpen);
   };
@@ -22,7 +21,7 @@ export default function WolfBadge() {
       </div>
 
       {isChatOpen && (
-        <div className="absolute bottom-16 right-4 w-80 h-96 bg-white border border-gray-300 rounded-lg shadow-lg flex flex-col">
+        <div className="absolute bottom-24 right-4 w-80 h-96 bg-white border border-gray-300 rounded-lg shadow-lg flex flex-col">
           {/* 채팅 창 헤더 */}
           <div className="p-3 bg-gray-500 text-white rounded-t-lg">
             AI의 조언
@@ -37,7 +36,7 @@ export default function WolfBadge() {
                   <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
                     {/* id에 따라 글씨 색상 변경 */}
                     <img
-                      src="src/assets/blackwolfchat.png"
+                      src="src/assets/babywolf.png"
                       alt="Black Wolf"
                       className="w-8 h-8 object-cover" // 크기를 32x32로 설정
                     />
@@ -46,7 +45,7 @@ export default function WolfBadge() {
                   {/* 메시지 내용 */}
                   <div className="p-2 rounded-lg flex-1 bg-gray-100">
                     {/* 메시지 텍스트 */}
-                    <span className="text-red-500">{message.text}</span>
+                    <span className="text-black">{message.text}</span>
                   </div>
                 </div>
               ))}

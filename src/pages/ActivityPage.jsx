@@ -66,7 +66,7 @@ export default function ActivityPage() {
       {/* flex container로 SearchBar와 CartIcon을 가로로 배치 */}
       <div className="flex items-center justify-between w-full max-w-3xl mb-4 bg-red space-x-4">
         <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
-        <CartIcon isClickable={true} onClick={toggleCart} />{' '}
+        <CartIcon onClick={toggleCart} />
         {/* 클릭 시 모달 토글 */}
       </div>
       <CardSection filteredCards={filteredCards} />
