@@ -14,7 +14,7 @@ export default function WolfBadge() {
     <div className="relative">
       <div className="absolute bottom-4 right-4">
         <img
-          src="src/assets/inversefaust.png"
+          src="/src/assets/inversefaust.png"
           alt="Black Wolf"
           className="w-20 h-20 object-contain" // 크기를 32x32로 설정
           onClick={handleToggleChat}
@@ -37,7 +37,7 @@ export default function WolfBadge() {
                   <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
                     {/* id에 따라 글씨 색상 변경 */}
                     <img
-                      src="src/assets/babywolf.png"
+                      src="/src/assets/babywolf.png"
                       alt="Black Wolf"
                       className="w-8 h-8 object-cover" // 크기를 32x32로 설정
                     />
