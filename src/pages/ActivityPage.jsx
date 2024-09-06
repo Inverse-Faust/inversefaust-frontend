@@ -36,19 +36,22 @@ export default function ActivityPage() {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 min-h-[calc(100vh-60px)] w-full">
-      {/* flex container로 SearchBar와 CartIcon을 가로로 배치 */}
-      <div className="flex items-center justify-between w-full max-w-3xl mb-4 space-x-4">
+    <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-white overflow-hidden">
+      {/* 상단 섹션: 검색바와 장바구니 아이콘 */}
+      <div className="flex items-center justify-between w-full max-w-3xl mx-auto p-4 space-x-4">
         <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
         <CartIcon onClick={toggleCart} />
-        {/* 클릭 시 모달 토글 */}
       </div>
-      <CardSection
-        filteredCards={filteredCards}
-        contractedData={contractedData}
-      />
 
-      {/* 장바구니 모달 조건부 렌더링 */}
+      {/* 카드 섹션 */}
+      <div className="flex-grow overflow-y-auto w-full max-w-3xl mx-auto px-4">
+        <CardSection
+          filteredCards={filteredCards}
+          contractedData={contractedData}
+        />
+      </div>
+
+      {/* 장바구니 모달 */}
       {isCartOpen && <Cart />}
     </div>
   );

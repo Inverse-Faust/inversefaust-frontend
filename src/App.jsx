@@ -5,17 +5,13 @@ import WolfBadge from './components/WolfBadge';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* 자식 라우트가 렌더링되는 위치 */}
-      <div className="flex-grow flex flex-col justify-center items-center bg-black w-full">
-        <div className="relative w-full bg-white max-w-full sm:max-w-4xl">
-          {/* max-w-full로 변경하여 유연한 대응 */}
-          {/* Outlet을 통해 자식 컴포넌트 렌더링 */}
+    <div className="h-screen flex flex-col bg-black overflow-hidden">
+      <div className="flex-grow flex flex-col w-full max-w-4xl mx-auto">
+        <div className="relative w-full bg-white flex-grow overflow-hidden">
           <Outlet />
           <WolfBadge />
         </div>
-        <div className="relative w-full bg-white max-w-full sm:max-w-4xl">
-          {/* max-w-full로 변경 */}
+        <div className="relative w-full bg-white">
           <Bottom />
         </div>
       </div>

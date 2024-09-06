@@ -1,21 +1,35 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function WolfBadge() {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const messages = useSelector(state => state.messages); // Redux에서 메시지 불러오기
+  const messages = useSelector(state => state.messages);
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsChatOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [wrapperRef]);
 
   const handleToggleChat = () => {
     setIsChatOpen(!isChatOpen);
   };
 
   return (
-    <div className="relative">
+    <div className="relative" ref={wrapperRef}>
       <div className="absolute bottom-4 right-4">
         <img
           src="https://inversefaust.s3.ap-northeast-2.amazonaws.com/inversefaust.png"
           alt="Black Wolf"
-          className="w-20 h-20 object-contain" // 크기를 32x32로 설정
+          className="w-20 h-20 object-contain"
           onClick={handleToggleChat}
         />
       </div>
@@ -34,31 +48,19 @@ export default function WolfBadge() {
                 <div key={index} className="flex mb-2 items-center">
                   {/* 프로필 뱃지 */}
                   <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center mr-2">
-                    {/* id에 따라 글씨 색상 변경 */}
                     <img
                       src="https://inversefaust.s3.ap-northeast-2.amazonaws.com/babywolf.png"
                       alt="Black Wolf"
-                      className="w-8 h-8 object-cover" // 크기를 32x32로 설정
+                      className="w-8 h-8 object-cover"
                     />
                   </div>
 
                   {/* 메시지 내용 */}
                   <div className="p-2 rounded-lg flex-1 bg-gray-100">
-                    {/* 메시지 텍스트 */}
                     <span className="text-black">{message.text}</span>
                   </div>
                 </div>
               ))}
-          </div>
-
-          {/* 채팅 창 닫기 버튼 */}
-          <div className="p-2 text-right">
-            <button
-              onClick={handleToggleChat}
-              className="text-sm text-gray-500 hover:text-gray-700"
-            >
-              닫기
-            </button>
           </div>
         </div>
       )}

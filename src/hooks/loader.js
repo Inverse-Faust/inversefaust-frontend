@@ -78,7 +78,6 @@ export async function DiaryLoader() {
 
   try {
     const response = await axios.get(`${apiUrl}/api/history/user1`);
-    console.log(response);
     // 응답이 성공적일 경우 데이터 반환
     if (response.status === 200 && response.data) {
       return response.data; // 실제 데이터를 반환

@@ -15,6 +15,5 @@ export default function activityContraction(data) {
     }
   });
 
-  console.log(result);
   return result;
 }

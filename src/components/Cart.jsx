@@ -41,8 +41,8 @@ const Cart = () => {
               <div className="w-72 h-14 px-4 py-2.5 bg-white rounded-lg border-2 border-indigo-700 justify-between items-center gap-4 flex">
                 <div className="flex items-center gap-2">
                   <div className="grow shrink basis-0 text-zinc-900 text-base font-normal leading-normal">
-                    <span className="font-semibold">{item.title}</span> -{' '}
-                    {item.timeSpent} - {item.purpose}
+                    <span className="font-semibold">{item.title}</span> /{' '}
+                    {item.timeSpent} 분 / {item.purpose}
                   </div>
                 </div>
                 <button

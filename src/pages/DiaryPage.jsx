@@ -76,8 +76,6 @@ export default function DiaryPage() {
   const diaries = useLoaderData(); // 수정: mockDiaries를 사용하지 않고 loader에서 받은 데이터 사용
   const submit = useSubmit(); // React Router의 submit 함수 사용
 
-  console.log(diaries);
-
   // 데이터를 action으로 넘기는 함수
   const handleSave = (id, newContent) => {
     const formData = new FormData();

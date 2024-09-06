@@ -95,18 +95,20 @@ export default function CardSection({ filteredCards, contractedData }) {
             />
 
             {/* 목적 선택 옵션 */}
-            <label className="block text-lg mb-2">어떤 목적이었나요?</label>
-            <select
-              className="w-full p-2 border rounded-lg"
-              value={purpose}
-              onChange={e => setPurpose(e.target.value)}
-            >
-              {contractedData[selectedCard].map(item => (
-                <option key={item.purpose} value={item.purpose}>
-                  {item.purpose}
-                </option>
-              ))}
-            </select>
+            <div className="w-full relative">
+              <label className="block text-lg mb-2">어떤 목적이었나요?</label>
+              <select
+                className="w-full p-2 border rounded-lg max-w-full"
+                value={purpose}
+                onChange={e => setPurpose(e.target.value)}
+              >
+                {contractedData[selectedCard].map(item => (
+                  <option key={item.purpose} value={item.purpose}>
+                    {item.purpose}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             {/* 닫기 및 전송 버튼 */}
             <div className="flex justify-end mt-4 space-x-2">
@@ -120,7 +122,7 @@ export default function CardSection({ filteredCards, contractedData }) {
                 className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
                 onClick={handleSend}
               >
-                전송
+                입력
               </button>
             </div>
           </div>
