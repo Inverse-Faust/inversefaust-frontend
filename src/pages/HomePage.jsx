@@ -64,7 +64,7 @@ export default function HomePage() {
 
   return (
     <div
-      className="flex flex-col justify-end items-center p-4 min-h-screen w-full bg-cover bg-center"
+      className="flex flex-col justify-end items-center p-4 min-h-[calc(100vh-60px)] w-full bg-cover bg-center"
       style={{
         backgroundImage: "url('/src/assets/background.png')",
       }}
