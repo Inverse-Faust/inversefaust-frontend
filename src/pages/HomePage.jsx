@@ -26,25 +26,22 @@ function HPBar({ hp }) {
 
 export default function HomePage() {
   const data = useLoaderData();
-  const [whiteWolfHp, setWhiteWolfHp] = useState(100);
-  const [blackWolfHp, setBlackWolfHp] = useState(100);
-  console.log(data);
-  useEffect(() => {
-    setTimeout(() => {
-      setWhiteWolfHp(80);
-      setBlackWolfHp(40);
-    }, 2000);
-  }, []);
+  const whiteWolfHp = data.white;
+  const blackWolfHp = data.black;
 
   const getWolfImage = (hp, type) => {
     if (hp > 50) {
+      return type === 'white'
+        ? 'src/assets/white_wolf_happy.png'
+        : 'src/assets/black_wolf_happy.png';
+    } else if (hp > 10) {
       return type === 'white'
         ? 'src/assets/white_wolf.png'
         : 'src/assets/black_wolf.png';
     } else {
       return type === 'white'
-        ? 'src/assets/white_wolf.png'
-        : 'src/assets/black_wolf_happy.png';
+        ? 'src/assets/white_wolf_sad.png'
+        : 'src/assets/black_wolf_mad.png';
     }
   };
 
