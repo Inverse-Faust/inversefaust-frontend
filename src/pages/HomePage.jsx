@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { useSelector } from 'react-redux'; // react-redux에서 useSelector를 가져옴
 
 // HPBar 컴포넌트
 function HPBar({ hp }) {
@@ -16,10 +17,6 @@ function HPBar({ hp }) {
         className={`${hpBarColor} h-full`}
         style={{ width: `${hpPercentage}%` }}
       ></div>
-      {/* HP 텍스트 (바 안에 숫자로 명확하게 표시) */}
-      {/* <span className="absolute inset-0 flex justify-center items-center text-white font-bold">
-        {hp} / 100
-      </span> */}
     </div>
   );
 }
@@ -28,6 +25,26 @@ export default function HomePage() {
   const data = useLoaderData();
   const whiteWolfHp = data.white;
   const blackWolfHp = data.black;
+
+  const messages = useSelector(state => state.messages); // Redux에서 메시지를 가져옴
+  const [visibleMessage, setVisibleMessage] = useState(null); // 표시할 메시지 상태
+  const [showMessage, setShowMessage] = useState(false); // 메시지 표시 여부
+
+  useEffect(() => {
+    if (messages && messages.length > 0) {
+      // 새 메시지가 있으면 이를 표시하고 5초 후에 숨김
+      const latestMessage = messages[messages.length - 1]; // 가장 최근 메시지
+      setVisibleMessage(latestMessage.text);
+      setShowMessage(true);
+
+      const timer = setTimeout(() => {
+        setShowMessage(false); // 5초 후 메시지 숨기기
+      }, 5000);
+
+      // 컴포넌트가 언마운트될 때 타이머를 정리
+      return () => clearTimeout(timer);
+    }
+  }, [messages]); // 메시지가 변경될 때마다 실행
 
   const getWolfImage = (hp, type) => {
     if (hp > 50) {
@@ -74,6 +91,13 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* 화면 중앙에 메시지 표시 */}
+      {showMessage && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white p-4 rounded-lg shadow-lg text-center">
+          {visibleMessage}
+        </div>
+      )}
     </div>
   );
 }
