@@ -7,7 +7,9 @@ const apiUrl = 'http://52.79.142.158'; // 혹은 https를 사용할 경우 'http
 export async function homeLoader() {
   try {
     // 실제 백엔드가 있을 때는 axios로 데이터 가져오기
-    const response = await axios.get(`${apiUrl}/api/user/score/user1`);
+    const response = await axios.get(`${apiUrl}/api/user/score/user1`, {
+      withCredentials: true,
+    });
     return wolfScore(response.data); // 성공 시 백엔드에서 받은 데이터 처리
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -30,7 +32,9 @@ export async function homeLoader() {
 
 export async function ActivityLoader() {
   try {
-    const response = await axios.get(`${apiUrl}/api/activity`);
+    const response = await axios.get(`${apiUrl}/api/activity`, {
+      withCredentials: true,
+    });
     return activityContraction(response.data);
   } catch (error) {
     console.error('Error fetching activity data:', error);
@@ -77,7 +81,9 @@ export async function DiaryLoader() {
   ];
 
   try {
-    const response = await axios.get(`${apiUrl}/api/history/user1`);
+    const response = await axios.get(`${apiUrl}/api/history/user1`, {
+      withCredentials: true,
+    });
     // 응답이 성공적일 경우 데이터 반환
     if (response.status === 200 && response.data) {
       return response.data; // 실제 데이터를 반환
