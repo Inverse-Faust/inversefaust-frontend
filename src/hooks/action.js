@@ -3,7 +3,7 @@ import { redirect } from 'react-router-dom';
 import { addMessage } from '../store/messageSlice';
 import store from '../store/store';
 
-const apiUrl = 'http://52.79.142.158'; // 혹은 https를 사용할 경우 'https://52.79.142.158'
+const apiUrl = 'http://52.79.142.158:8090'; // 혹은 https를 사용할 경우 'https://52.79.142.158'
 
 export async function submitEntryAction({ request }) {
   const formData = await request.formData();

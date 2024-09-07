@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, clearCart } from '../store/cartSlice'; // clearCart 액션 추가
 import axios from 'axios';
 
-const apiUrl = 'http://52.79.142.158'; // 혹은 https를 사용할 경우 'https://52.79.142.158'
+const apiUrl = 'http://52.79.142.158:8090'; // 혹은 https를 사용할 경우 'https://52.79.142.158'
 
 const Cart = () => {
   const cartItems = useSelector(state => state.cart);
