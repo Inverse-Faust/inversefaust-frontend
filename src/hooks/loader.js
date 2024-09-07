@@ -2,7 +2,7 @@ import activityContraction from '../utils/activity';
 import wolfScore from '../utils/score';
 import axios from 'axios';
 
-const apiUrl = 'http://52.79.142.158'; // 혹은 https를 사용할 경우 'https://52.79.142.158'
+const apiUrl = 'http://52.79.142.158:8090'; // 혹은 https를 사용할 경우 'https://52.79.142.158'
 
 export async function homeLoader() {
   try {
