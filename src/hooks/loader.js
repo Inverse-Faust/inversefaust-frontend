@@ -2,7 +2,7 @@ import activityContraction from '../utils/activity';
 import wolfScore from '../utils/score';
 import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const apiUrl = '52.79.142.158';
 
 export async function homeLoader() {
   try {

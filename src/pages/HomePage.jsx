@@ -90,6 +90,15 @@ export default function HomePage() {
     >
       <div className="flex flex-col items-center w-full h-full">
         <div className="flex-grow"></div>{' '}
+        <img
+          src={
+            'https://inversefaust.s3.ap-northeast-2.amazonaws.com/faustlogo.png'
+          }
+          alt="faustlogo"
+          className="w-full h-auto max-w-[150px] object-contain mb-8"
+          style={{ transform: 'scale(1.2)' }}
+        />
+        <div className="flex-grow"></div>{' '}
         {/* This empty div pushes the content down */}
         {/* 방법 1: margin-bottom 사용 */}
         <div className="grid grid-cols-2 gap-4 w-full max-w-3xl mt-auto mb-28">

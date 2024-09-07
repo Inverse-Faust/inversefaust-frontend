@@ -3,7 +3,7 @@ import { redirect } from 'react-router-dom';
 import { addMessage } from '../store/messageSlice';
 import store from '../store/store';
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const apiUrl = '52.79.142.158';
 
 export async function submitEntryAction({ request }) {
   const formData = await request.formData();

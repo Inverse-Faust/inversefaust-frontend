@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, clearCart } from '../store/cartSlice'; // clearCart 액션 추가
 import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const apiUrl = '52.79.142.158';
 
 const Cart = () => {
   const cartItems = useSelector(state => state.cart);
