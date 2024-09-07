@@ -22,7 +22,7 @@ const Cart = () => {
         purpose: cartItem.purpose,
       }));
       // Axios로 POST 요청을 보내서 데이터를 전송
-      await axios.post(`${apiUrl}/api/activity/user1`, data);
+      await axios.post(`/${apiUrl}/api/activity/user1`, data);
       dispatch(clearCart());
     } catch (error) {
       console.error('전송 실패:', error);

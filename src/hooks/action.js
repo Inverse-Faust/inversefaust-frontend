@@ -13,7 +13,10 @@ export async function submitEntryAction({ request }) {
   };
 
   try {
-    const response = await axios.post(`${apiUrl}/api/diary/user1`, requestBody);
+    const response = await axios.post(
+      `/${apiUrl}/api/diary/user1`,
+      requestBody
+    );
     console.log(response);
     const data = await response.data;
     store.dispatch(addMessage({ text: data.advice }));
@@ -33,7 +36,7 @@ export async function DiaryAction({ request }) {
 
   try {
     // 실제 API 요청을 통해 서버로 데이터를 전송합니다.
-    const response = await axios.put(`${apiUrl}/api/diary/${id}`, {
+    const response = await axios.put(`/${apiUrl}/api/diary/${id}`, {
       contents: newContent,
     });
 
